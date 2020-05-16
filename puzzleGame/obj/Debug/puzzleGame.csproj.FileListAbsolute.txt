@@ -1,0 +1,10 @@
+C:\Users\marti\Desktop\puzzleGame\puzzleGame\bin\Debug\puzzleGame.exe.config
+C:\Users\marti\Desktop\puzzleGame\puzzleGame\bin\Debug\puzzleGame.exe
+C:\Users\marti\Desktop\puzzleGame\puzzleGame\bin\Debug\puzzleGame.pdb
+C:\Users\marti\Desktop\puzzleGame\puzzleGame\obj\Debug\puzzleGame.csprojAssemblyReference.cache
+C:\Users\marti\Desktop\puzzleGame\puzzleGame\obj\Debug\puzzleGame.Form1.resources
+C:\Users\marti\Desktop\puzzleGame\puzzleGame\obj\Debug\puzzleGame.Properties.Resources.resources
+C:\Users\marti\Desktop\puzzleGame\puzzleGame\obj\Debug\puzzleGame.csproj.GenerateResource.cache
+C:\Users\marti\Desktop\puzzleGame\puzzleGame\obj\Debug\puzzleGame.csproj.CoreCompileInputs.cache
+C:\Users\marti\Desktop\puzzleGame\puzzleGame\obj\Debug\puzzleGame.exe
+C:\Users\marti\Desktop\puzzleGame\puzzleGame\obj\Debug\puzzleGame.pdb
