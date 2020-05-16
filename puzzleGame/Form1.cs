@@ -12,36 +12,41 @@ namespace puzzleGame
 {
     public partial class Form1 : Form
     {
-        private Button[,] matrix = new Button[5, 5];
-        private int blankX = 2;
-        private int blankY = 2;
-        private int buttonDimension = 90;
+        private Button[,] matrix = new Button[4, 4]; //must be square
+
+        private int blankX;
+        private int blankY;
+        private int buttonDimension = 80;
         public Form1()
         {
-            InitializeComponent();
+            InitializeComponent();        
             initializeButtons();
         }
 
         public void initializeButtons()
         {         
-            int number = 1;
+            int index = 0;
             int j=0, i = 0;
-            for (j=0; j<matrix.GetLength(0); j++)
+            var elementList = insertElements().ToList();
+            elementList.Add("");
+            for (j=0; j<matrix.GetLength(1); j++)
             {
-                for (i = 0; i < matrix.GetLength(1); i++)
+                for (i = 0; i < matrix.GetLength(0); i++)
                 {
                     matrix[i, j] = new Button();
-                    matrix[i, j].Text = number.ToString();
+                    matrix[i, j].Text = elementList[index];
                     matrix[i, j].Location = new System.Drawing.Point(buttonDimension*i, buttonDimension*j);
                     matrix[i, j].Name = i.ToString() + j.ToString();
                     matrix[i, j].Size = new System.Drawing.Size(buttonDimension, buttonDimension);
                     matrix[i, j].Click += new System.EventHandler(this.buttonCiked);
+                    matrix[i, j].Font = new Font(Font.FontFamily, 15);
                     this.Controls.Add(matrix[i,j]);
-                    number++;
+                    index++;
                 }
             }
             this.ClientSize = new System.Drawing.Size(buttonDimension*i, buttonDimension*j);
-            matrix[blankX, blankY].Text = "";
+            blankX = j-1;
+            blankY = i-1;
         }
 
         private void buttonCiked(object sender, EventArgs e)
@@ -60,6 +65,40 @@ namespace puzzleGame
                 blankX = x;
                 blankY = y;
             }
+            if (chekForWin()) MessageBox.Show("congratulation, you won!", "GG");
+        }
+
+        private IEnumerable<string> insertElements()
+        {
+            var r = new Random();
+            var elementList = new List<string>();
+            for (int i = 1; i <= matrix.Length-1; i++)
+            {
+                elementList.Add(i.ToString());
+            }
+            return elementList.OrderBy(x => r.Next());
+        }
+
+        private bool chekForWin()
+        {
+            int count = 1;
+            for (int j = 0; j < matrix.GetLength(1); j++)
+            {
+                for (int i = 0; i < matrix.GetLength(0); i++)
+                {
+                    if(matrix[i, j].Text != "")
+                    {
+                        if(Convert.ToInt32(matrix[i, j].Text) != count) return false;
+                    }
+                    count++;
+                }
+            }
+            return true;
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
