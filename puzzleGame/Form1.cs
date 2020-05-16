@@ -65,7 +65,14 @@ namespace puzzleGame
                 blankX = x;
                 blankY = y;
             }
-            if (chekForWin()) MessageBox.Show("congratulation, you won!", "GG");
+            if (chekForWin())
+            {
+                MessageBox.Show("press ok to restart", "YOU WON!");
+                this.Dispose();
+                Application.Restart();
+            }
+                
+                
         }
 
         private IEnumerable<string> insertElements()
