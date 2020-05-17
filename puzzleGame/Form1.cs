@@ -12,19 +12,18 @@ namespace puzzleGame
 {
     public partial class Form1 : Form
     {
-        private Button[,] matrix = new Button[4, 4]; //must be square
-
+        private Button[,] matrix;
         private int blankX;
         private int blankY;
         private int buttonDimension = 80;
         public Form1()
         {
-            InitializeComponent();        
-            initializeButtons();
+            InitializeComponent();
         }
 
-        public void initializeButtons()
-        {         
+        public void startGame(int matrixDimension)
+        {
+            matrix = new Button[matrixDimension, matrixDimension]; //must be square
             int index = 0;
             int j=0, i = 0;
             var elementList = insertElements().ToList();
@@ -67,7 +66,7 @@ namespace puzzleGame
             }
             if (chekForWin())
             {
-                MessageBox.Show("press ok to restart", "YOU WON!");
+                MessageBox.Show("good job, press ok to play again", "YOU WON!");
                 this.Dispose();
                 Application.Restart();
             }
@@ -103,9 +102,39 @@ namespace puzzleGame
             return true;
         }
 
-        private void Form1_Load(object sender, EventArgs e)
-        {
 
+
+        private void disposeFirstScene()
+        {
+            btn_easy.Dispose();
+            btn_medium.Dispose();
+            btn_hard.Dispose();
+            btn_impossible.Dispose();
+            label1.Dispose();
+        }
+
+        private void btn_easy_Click(object sender, EventArgs e)
+        {
+            disposeFirstScene();
+            startGame(4);
+        }
+
+        private void btn_medium_Click(object sender, EventArgs e)
+        {
+            disposeFirstScene();
+            startGame(5);
+        }
+
+        private void btn_hard_Click(object sender, EventArgs e)
+        {
+            disposeFirstScene();
+            startGame(6);
+        }
+
+        private void btn_impossible_Click(object sender, EventArgs e)
+        {
+            disposeFirstScene();
+            startGame(8);
         }
     }
 }
